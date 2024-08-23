@@ -31,7 +31,7 @@ if response.status_code == 200:
                 for span in spans:
                     span_text = span['title']
                     # Concatenar el contenido
-                    resultado = f"{fecha_texto} - {span_text}"
+                    resultado = f"{fecha_texto} - {span_text} |"
                     # Escribir el resultado en el archivo
                     file.write(resultado + '\n')        
 
