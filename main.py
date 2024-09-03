@@ -1,5 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
+from Formatdate import convertir_fecha
+import re
 
 # URL de la página web que quieres hacer scraping
 url = 'https://www.yelu.do/leidsa/results/loto-mas'
@@ -30,11 +32,21 @@ if response.status_code == 200:
                 spans = row.select('span[title]')
                 for span in spans:
                     span_text = span['title']
+
+                    #creating a list from text using "-" or "+" for splitting
+                    
+                    numeros = re.findall(r'\d+', span_text)
+                    # Convertimos los resultados a enteros
+                    numeros = list(map(int, numeros))
+                    print(numeros)
+                    texto = ",".join(map(str, numeros))
+
+                    fecha_texto_formateada = convertir_fecha(fecha_texto.split('-')[0])
                     # Concatenar el contenido
-                    resultado = f"{fecha_texto} - {span_text} |"
+                    resultado = f"{fecha_texto_formateada} , {fecha_texto.split('-')[1]} , {texto} |"
                     # Escribir el resultado en el archivo
                     file.write(resultado + '\n')        
 
-                    print('Resultado:', resultado)
+                    print(resultado)
 else:
     print(f"Error al acceder a la página: {response.status_code}")
