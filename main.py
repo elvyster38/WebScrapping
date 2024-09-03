@@ -34,13 +34,10 @@ if response.status_code == 200:
                     span_text = span['title']
 
                     #creating a list from text using "-" or "+" for splitting
-                    
                     numeros = re.findall(r'\d+', span_text)
                     # Convertimos los resultados a enteros
                     numeros = list(map(int, numeros))
-                    print(numeros)
                     texto = ",".join(map(str, numeros))
-
                     fecha_texto_formateada = convertir_fecha(fecha_texto.split('-')[0])
                     # Concatenar el contenido
                     resultado = f"{fecha_texto_formateada} , {fecha_texto.split('-')[1]} , {texto} "
