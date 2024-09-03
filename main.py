@@ -43,7 +43,7 @@ if response.status_code == 200:
 
                     fecha_texto_formateada = convertir_fecha(fecha_texto.split('-')[0])
                     # Concatenar el contenido
-                    resultado = f"{fecha_texto_formateada} , {fecha_texto.split('-')[1]} , {texto} |"
+                    resultado = f"{fecha_texto_formateada} , {fecha_texto.split('-')[1]} , {texto} "
                     # Escribir el resultado en el archivo
                     file.write(resultado + '\n')        
 
